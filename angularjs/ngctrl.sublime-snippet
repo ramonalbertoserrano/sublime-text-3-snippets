@@ -11,6 +11,7 @@
 	function ${2:nombreControlador}(\$log) {
 		/* jshint validthis: true */
 		var vm = this;
+		vm.\$log = \$log;
 	}
 
 	activate();
