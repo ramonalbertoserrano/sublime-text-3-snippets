@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+(function () {
+	'use strict';
+	angular
+		.module('${1:nombreModulo}')
+		.controller('${2:nombreControlador}', ${2:nombreControlador});
+
+	${2:nombreControlador}.\$inject = ['\$log'];
+
+	function ${2:nombreControlador}(\$log) {
+		/* jshint validthis: true */
+		var vm = this;
+	}
+
+	activate();
+
+	function activate() {
+
+	}
+})();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ngctrl</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

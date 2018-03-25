@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+(function () {
+	'use strict';
+	angular
+		.module('${1:nombreModulo}')
+		.directive('${2:nombreDirectiva}', ${2:nombreDirectiva});
+
+	function ${2:nombreDirectiva}() {	
+		var directive = {
+			restrict: 'AE',
+			require: 'ngModel',
+			link: link
+		};
+		
+		return directive;
+
+		function link(scope, element, attrs, controller) {
+
+		}
+	}
+})();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ngdir</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
