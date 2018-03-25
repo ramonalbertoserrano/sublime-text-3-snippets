@@ -6,7 +6,9 @@
 		.module('${1:nombreModulo}')
 		.directive('${2:nombreDirectiva}', ${2:nombreDirectiva});
 
-	function ${2:nombreDirectiva}() {	
+	${2:nombreDirectiva}.\$inject = ['\$log'];
+
+	function ${2:nombreDirectiva}(\$log) {	
 		var directive = {
 			restrict: 'AE',
 			require: 'ngModel',

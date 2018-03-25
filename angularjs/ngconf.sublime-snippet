@@ -4,7 +4,7 @@
 	'use strict';
 	angular
 		.module('${1:nombreModulo}')
-		.config('${2:nombreConfiguracion}');
+		.config(${2:nombreConfiguracion});
 
 	function ${2:nombreConfiguracion}(\$stateProvider) {	
 		\$stateProvider
