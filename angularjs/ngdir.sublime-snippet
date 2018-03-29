@@ -17,7 +17,7 @@
 		
 		return directive;
 
-		function link(scope, element, attrs, controller) {
+		function link(scope, element, attributes, controller) {
 
 		}
 	}
