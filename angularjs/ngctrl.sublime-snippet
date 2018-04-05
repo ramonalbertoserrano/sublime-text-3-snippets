@@ -2,19 +2,22 @@
 	<content><![CDATA[
 (function () {
 	'use strict';
+	
+	var vm;
+
 	angular
 		.module('${1:nombreModulo}')
-		.controller('${2:nombreControlador}', ${2:nombreControlador});
+		.controller('${2:NombreControlador}', ${2:NombreControlador});
 
-	${2:nombreControlador}.\$inject = ['\$log'];
+	${2:NombreControlador}.\$inject = ['\$log'];
 
-	function ${2:nombreControlador}(\$log) {
+	function ${2:NombreControlador}(\$log) {
 		/* jshint validthis: true */
-		var vm = this;
+		vm = this;
 		vm.\$log = \$log;
-	}
 
-	activate();
+		activate();
+	}
 
 	function activate() {
 

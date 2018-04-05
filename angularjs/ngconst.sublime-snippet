@@ -10,7 +10,6 @@
 	angular
 		.module('${2:nombreModulo}')
 		.constant('${1:nombreConstante}', ${1:nombreConstante});
-
 })();
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
