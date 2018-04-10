@@ -2,6 +2,7 @@
 	<content><![CDATA[
 (function () {
 	'use strict';
+	
 	angular
 		.module('${1:nombreModulo}')
 		.config(${2:nombreConfiguracion});
