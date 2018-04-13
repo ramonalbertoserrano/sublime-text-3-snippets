@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[
+(function () {
+	'use strict';
+
+	angular
+		.module('WebBancoChile.${1:nombreModulo}')
+		.controller('${2:NombreControlador}', ${2:NombreControlador});
+
+	${2:NombreControlador}.\$inject = [
+		'\$injector', 
+		'\$log', 
+		'\$state',
+		'\$window',
+		'clienteData',
+		'errorHandlerService'
+	];
+
+	function ${2:NombreControlador}(
+		\$injector,
+		\$log,
+		\$state,
+		\$window,
+		clienteData,
+		errorHandlerService
+	) {
+		/* jshint validthis: true */
+		var vm = this;
+		
+		vm.\$injector = \$injector;
+		vm.\$log = \$log;
+		vm.\$state = \$state;
+		vm.\$window = \$window;
+
+		vm.\$dependencia = vm.\$injector.get('\$dependencia');
+
+		vm.clienteData = clienteData;
+		vm.errorHandlerService = errorHandlerService;
+
+		vm.init();
+	}
+
+	${2:NombreControlador}.prototype.init = function() {
+		/* jshint validthis: true */
+		var vm = this;
+    };
+})();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchngcontroller</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

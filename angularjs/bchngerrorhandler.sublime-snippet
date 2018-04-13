@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+<div ng-error-handler error="vm.${1:nombreFuncion}ErrorHandler.error" cargando="vm.${1:nombreFuncion}ErrorHandler.cargando" funcion="vm.${1:nombreFuncion}()" template="C|E|F|M|S" tipo-button="R|V" tipo-error="'E|I|S|W'">
+</div>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchngerrorhandler</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.html</scope> -->
+</snippet>

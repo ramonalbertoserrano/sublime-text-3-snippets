@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+${1:NombreControlador}.prototype.${2:nombreFuncion} = function(${3:nombreParametro}) {
+	/* jshint validthis: true */
+	var vm = this;
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchngfunction</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

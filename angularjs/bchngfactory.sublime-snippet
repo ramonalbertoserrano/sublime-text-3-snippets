@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+(function () {
+	'use strict';
+
+	angular
+		.module('${1:nombreModulo}')
+		.factory('${2:nombreFactory}', ${2:nombreFactory});
+
+	${2:nombreFactory}.\$inject = [
+		'\$filter',
+		'\$http'
+	];
+
+	function ${2:nombreFactory}(
+		\$filter, 
+		\$http
+	) {
+		var factory = {
+			${3:nombreFuncion}: ${3:nombreFuncion}
+		};
+
+		return factory;
+
+		function ${3:nombreFuncion}(${4:nombreParametro}) {
+			var path = \$filter('propertiesFilter')('\${URL_API.${5:nombreProperty}}');
+			return \$http.get(path + '/${6:nombreRuta}/' + ${4:nombreParametro});
+		}
+	}
+})();
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchngfactory</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

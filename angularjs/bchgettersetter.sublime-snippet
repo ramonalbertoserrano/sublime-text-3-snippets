@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+${1:nombreControladorServicio}.prototype.get${2:nombreVariable} = function() {
+	/* jshint validthis: true */
+	var ${3:nombreThis} = this;
+	return ${3:nombreThis}.${2:nombreVariable};
+};
+
+${1:nombreControladorServicio}.prototype.set${2:nombreVariable} = function(valor) {
+	/* jshint validthis: true */
+	var ${3:nombreThis} = this;
+	${3:nombreThis}.${2:nombreVariable} = valor;
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchgettersetter</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

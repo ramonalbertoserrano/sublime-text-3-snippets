@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+vm.${1:nombreFuncion}ErrorHandler.cargando = true;
+vm.${1:nombreFuncion}ErrorHandler.error = null;
+vm.${2:nombreService}.${1:nombreFuncion}(${3:nombreParametro})
+	.then(${1:nombreFuncion}Complete, ${1:nombreFuncion}Failed);
+
+	function ${1:nombreFuncion}Complete(response) {
+		if (response.data.errorCode !== '0') {
+			vm.${1:nombreFuncion}ErrorHandler.error = vm.errorHandlerService.gestionarError(response);
+			vm.\$window.scrollTo(0, 0);
+		} else {
+			vm.${1:nombreFuncion}Response = response.data;
+		}
+		vm.${1:nombreFuncion}ErrorHandler.cargando = false;
+	}
+
+	function ${1:nombreFuncion}Failed(error) {
+		vm.${1:nombreFuncion}ErrorHandler.error = vm.errorHandlerService.gestionarError(error);
+		vm.${1:nombreFuncion}ErrorHandler.cargando = false;
+		vm.\$window.scrollTo(0, 0);
+	}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bchngpromise</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
