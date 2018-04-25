@@ -16,6 +16,7 @@
 		\$filter, 
 		\$http
 	) {
+		var ruta = \$filter('propertiesFilter')('\${URL_API.${5:nombreProperty}}');
 		var factory = {
 			${3:nombreFuncion}: ${3:nombreFuncion}
 		};
@@ -23,8 +24,7 @@
 		return factory;
 
 		function ${3:nombreFuncion}(${4:nombreParametro}) {
-			var path = \$filter('propertiesFilter')('\${URL_API.${5:nombreProperty}}');
-			return \$http.get(path + '/${6:nombreRuta}/' + ${4:nombreParametro});
+			return \$http.get(ruta + '/${6:nombreRuta}/' + ${4:nombreParametro});
 		}
 	}
 })();

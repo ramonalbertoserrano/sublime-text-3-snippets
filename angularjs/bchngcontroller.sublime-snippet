@@ -8,34 +8,37 @@
 		.controller('${2:NombreControlador}', ${2:NombreControlador});
 
 	${2:NombreControlador}.\$inject = [
+		'\$filter', 
 		'\$injector', 
 		'\$log', 
+		'\$q', 
 		'\$state',
 		'\$window',
-		'clienteData',
-		'errorHandlerService'
+		'clienteData'
 	];
 
 	function ${2:NombreControlador}(
+		\$filter,
 		\$injector,
 		\$log,
+		\$q,
 		\$state,
 		\$window,
-		clienteData,
-		errorHandlerService
+		clienteData
 	) {
 		/* jshint validthis: true */
 		var vm = this;
 		
+		vm.\$filter = \$filter;
 		vm.\$injector = \$injector;
 		vm.\$log = \$log;
+		vm.\$q = \$q;
 		vm.\$state = \$state;
 		vm.\$window = \$window;
 
 		vm.\$dependencia = vm.\$injector.get('\$dependencia');
 
 		vm.clienteData = clienteData;
-		vm.errorHandlerService = errorHandlerService;
 
 		vm.init();
 	}
