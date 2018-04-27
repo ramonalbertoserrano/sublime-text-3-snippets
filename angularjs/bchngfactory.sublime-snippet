@@ -1,36 +1,34 @@
 <snippet>
-	<content><![CDATA[
+  <content><![CDATA[
 (function () {
-	'use strict';
+  angular
+    .module('${1:nombreModulo}')
+    .factory('${2:nombreFactory}', ${2:nombreFactory});
 
-	angular
-		.module('${1:nombreModulo}')
-		.factory('${2:nombreFactory}', ${2:nombreFactory});
+  ${2:nombreFactory}.\$inject = [
+    '\$filter',
+    '\$http'
+  ];
 
-	${2:nombreFactory}.\$inject = [
-		'\$filter',
-		'\$http'
-	];
+  function ${2:nombreFactory}(
+    \$filter,
+    \$http
+  ) {
+    var ruta = \$filter('propertiesFilter')('\${URL_API.${3:nombreProperty}}');
+    var factory = {
+      ${4:nombreFuncion}: ${4:nombreFuncion}
+    };
 
-	function ${2:nombreFactory}(
-		\$filter, 
-		\$http
-	) {
-		var ruta = \$filter('propertiesFilter')('\${URL_API.${5:nombreProperty}}');
-		var factory = {
-			${3:nombreFuncion}: ${3:nombreFuncion}
-		};
+    return factory;
 
-		return factory;
-
-		function ${3:nombreFuncion}(${4:nombreParametro}) {
-			return \$http.get(ruta + '/${6:nombreRuta}/' + ${4:nombreParametro});
-		}
-	}
+    function ${4:nombreFuncion}(${5:nombreParametro}) {
+      return \$http.get(ruta + '/${6:nombreRuta}/' + ${5:nombreParametro});
+    }
+  }
 })();
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>bchngfactory</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.js</scope>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>bchngfactory</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
 </snippet>

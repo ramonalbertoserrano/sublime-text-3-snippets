@@ -1,0 +1,25 @@
+<snippet>
+  <content><![CDATA[
+(function() {
+  angular
+    .module('${1:nombreModulo}')
+    .filter('${2:nombreFiltro}', ${2:nombreFiltro});
+
+    ${2:nombreFiltro}.\$inject = ['\$log'];
+
+    function ${2:nombreFiltro}(\$log) {
+      return filter;
+
+    function filter(datos, ${3:nombreParametro}) {
+      var retorno = null;
+
+      return retorno;
+    }
+  }
+})();
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ngfilter</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>

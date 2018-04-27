@@ -1,56 +1,57 @@
 <snippet>
-	<content><![CDATA[
+  <content><![CDATA[
 (function () {
-	'use strict';
+  angular
+    .module('WebBancoChile.${1:nombreModulo}')
+    .controller('${2:nombreControlador}', ${2:nombreControlador});
 
-	angular
-		.module('WebBancoChile.${1:nombreModulo}')
-		.controller('${2:NombreControlador}', ${2:NombreControlador});
+  ${2:nombreControlador}.\$inject = [
+    '\$filter',
+    '\$injector',
+    '\$log',
+    '\$q',
+    '\$state',
+    '\$window',
+    'clienteData',
+    'userProfile'
+  ];
 
-	${2:NombreControlador}.\$inject = [
-		'\$filter', 
-		'\$injector', 
-		'\$log', 
-		'\$q', 
-		'\$state',
-		'\$window',
-		'clienteData'
-	];
+  function ${2:nombreControlador}(
+    \$filter,
+    \$injector,
+    \$log,
+    \$q,
+    \$state,
+    \$window,
+    clienteData,
+    userProfile
+  ) {
+    /* jshint validthis: true */
+    var vm = this;
 
-	function ${2:NombreControlador}(
-		\$filter,
-		\$injector,
-		\$log,
-		\$q,
-		\$state,
-		\$window,
-		clienteData
-	) {
-		/* jshint validthis: true */
-		var vm = this;
-		
-		vm.\$filter = \$filter;
-		vm.\$injector = \$injector;
-		vm.\$log = \$log;
-		vm.\$q = \$q;
-		vm.\$state = \$state;
-		vm.\$window = \$window;
+    vm.\$filter = \$filter;
+    vm.\$injector = \$injector;
+    vm.\$log = \$log;
+    vm.\$q = \$q;
+    vm.\$state = \$state;
+    vm.\$window = \$window;
 
-		vm.\$dependencia = vm.\$injector.get('\$dependencia');
+    vm.\$dependencia = vm.\$injector.get('\$dependencia');
 
-		vm.clienteData = clienteData;
+    vm.clienteData = clienteData;
+    vm.userProfile = userProfile;
 
-		vm.init();
-	}
+    vm.init();
+  }
 
-	${2:NombreControlador}.prototype.init = function() {
-		/* jshint validthis: true */
-		var vm = this;
+  ${2:nombreControlador}.prototype.init = function() {
+    /* jshint validthis: true */
+    var vm = this;
     };
 })();
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>bchngcontroller</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.js</scope>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>bchngcontroller</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
 </snippet>

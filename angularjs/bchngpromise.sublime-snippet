@@ -1,39 +1,39 @@
 <snippet>
-	<content><![CDATA[
+  <content><![CDATA[
 var deferred = vm.\$q.defer();
 
 vm.${1:nombreFuncion}ErrorHandler.cargando = true;
 vm.${1:nombreFuncion}ErrorHandler.error = null;
 vm.${2:nombreServicio}.${1:nombreFuncion}(${3:nombreParametro})
-	.then(${1:nombreFuncion}Complete, ${1:nombreFuncion}Failed);
+  .then(${1:nombreFuncion}Complete, ${1:nombreFuncion}Failed);
 
-	function ${1:nombreFuncion}Complete(response) {
-		vm.${1:nombreFuncion}ErrorHandler.cargando = false;
-		if (response.data.errorCode !== '0') {
-			vm.${1:nombreFuncion}ErrorHandler.error = {
-				message: 'error'
-			};
-			vm.\$window.scrollTo(0, 0);
-			deferred.reject();
-		} else {
-			var ${1:nombreFuncion}Response = response.data;
-			deferred.resolve(${1:nombreFuncion}Response);
-		}
-	}
+function ${1:nombreFuncion}Complete(${1:nombreFuncion}Response) {
+  vm.${1:nombreFuncion}ErrorHandler.cargando = false;
+  if (${1:nombreFuncion}Response.data.errorCode !== '0') {
+    vm.${1:nombreFuncion}ErrorHandler.error = {
+      message: 'error'
+    };
+    vm.\$window.scrollTo(0, 0);
+    deferred.reject();
+  } else {
+    var ${1:nombreFuncion}Response = ${1:nombreFuncion}Response.data;
+    deferred.resolve(${1:nombreFuncion}Response);
+  }
+}
 
-	function ${1:nombreFuncion}Failed(error) {
-		vm.${1:nombreFuncion}ErrorHandler.cargando = false;
-		vm.${1:nombreFuncion}ErrorHandler.error = {
-			message: 'error'
-		};
-		vm.\$window.scrollTo(0, 0);
-		deferred.reject();
-	}
+function ${1:nombreFuncion}Failed(${1:nombreFuncion}Error) {
+  vm.${1:nombreFuncion}ErrorHandler.cargando = false;
+  vm.${1:nombreFuncion}ErrorHandler.error = {
+    message: 'error'
+  };
+  vm.\$window.scrollTo(0, 0);
+  deferred.reject();
+}
 
 return deferred.promise;
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>bchngpromise</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.js</scope>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>bchngpromise</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
 </snippet>
