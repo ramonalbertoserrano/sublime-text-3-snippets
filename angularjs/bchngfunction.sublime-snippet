@@ -2,7 +2,7 @@
   <content><![CDATA[
 ${1:nombreControlador}.prototype.${2:nombreFuncion} = function(${3:nombreParametro}) {
   /* jshint validthis: true */
-  var vm = this;
+  var vm = this;${100}
 };
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

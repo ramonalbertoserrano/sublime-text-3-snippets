@@ -1,0 +1,26 @@
+<snippet>
+  <content><![CDATA[
+var deferred = vm.\$q.defer();
+
+vm.${1:nombreServicio}.${2:nombreFuncion}(${3:nombreParametro})
+  .then(${2:nombreFuncion}Complete, ${2:nombreFuncion}Failed);
+
+function ${2:nombreFuncion}Complete(${2:nombreFuncion}Response) {
+  if (${2:nombreFuncion}Response.data.errorCode !== '0') {
+    deferred.reject('${4:mensajeError}');
+  } else {
+    deferred.resolve(${2:nombreFuncion}Response.data);
+  }
+}
+
+function ${2:nombreFuncion}Failed(${2:nombreFuncion}Error) {
+  deferred.reject('${4:mensajeError}');
+}
+
+return deferred.promise;${100}
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ngpromise</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>

@@ -5,14 +5,18 @@
     .module('${1:nombreModulo}')
     .filter('${2:nombreFiltro}', ${2:nombreFiltro});
 
-    ${2:nombreFiltro}.\$inject = ['\$log'];
+  ${2:nombreFiltro}.\$inject = [
+    '\$log'
+  ];
 
-    function ${2:nombreFiltro}(\$log) {
-      return filter;
+  function ${2:nombreFiltro}(
+    \$log
+  ) {
+    return filter;
 
     function filter(datos, ${3:nombreParametro}) {
       var retorno = null;
-
+      ${100}
       return retorno;
     }
   }

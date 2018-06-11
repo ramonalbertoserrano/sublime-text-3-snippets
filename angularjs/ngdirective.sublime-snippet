@@ -5,9 +5,13 @@
     .module('${1:nombreModulo}')
     .directive('${2:nombreDirectiva}', ${2:nombreDirectiva});
 
-  ${2:nombreDirectiva}.\$inject = ['\$log'];
+  ${2:nombreDirectiva}.\$inject = [
+    '\$log'
+  ];
 
-  function ${2:nombreDirectiva}(\$log) {
+  function ${2:nombreDirectiva}(
+    \$log
+  ) {
     var directive = {
       restrict: 'AE',
       require: 'ngModel',
@@ -17,7 +21,7 @@
     return directive;
 
     function link(scope, element, attributes, controller) {
-
+      ${100}
     }
   }
 })();

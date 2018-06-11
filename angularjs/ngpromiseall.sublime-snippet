@@ -1,0 +1,28 @@
+<snippet>
+  <content><![CDATA[
+var deferred = vm.$q.defer();
+var i = 0;
+var ${1:nombreFuncion}Promises = [
+  vm.${1:nombreFuncion}(${2:nombreParametro}),
+  vm.${1:nombreFuncion}(${2:nombreParametro}),
+  vm.${1:nombreFuncion}(${2:nombreParametro})
+];
+
+Promise.all(${1:nombreFuncion}Promises)
+  .then(function(${1:nombreFuncion}PromisesResponse) {
+    vm.x = ${1:nombreFuncion}PromisesResponse[i++];
+    vm.y = ${1:nombreFuncion}PromisesResponse[i++];
+    vm.z = ${1:nombreFuncion}PromisesResponse[i++];
+  })
+  /* jslint es5: true */
+  .catch(function(${1:nombreFuncion}PromisesError) {
+    deferred.reject(${1:nombreFuncion}PromisesError);
+  });
+
+return deferred.promise;${100}
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ngpromiseall</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>

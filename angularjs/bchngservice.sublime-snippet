@@ -6,22 +6,30 @@
     .service('${2:nombreServicio}', ${2:nombreServicio});
 
   ${2:nombreServicio}.\$inject = [
+    '\$filter',
+    '\$injector',
     '${3:nombreFactory}'
   ];
 
   function ${2:nombreServicio}(
+    \$filter,
+    \$injector,
     ${3:nombreFactory}
   ) {
     /* jshint validthis: true */
     var service = this;
+
+    service.\$filter = \$filter;
+    service.\$injector = \$injector;
     service.${3:nombreFactory} = ${3:nombreFactory};
+
+    service.init();
   }
 
-  ${2:nombreServicio}.prototype.${4:nombreFuncion} = function(${5:nombreParametro}) {
+  ${2:nombreServicio}.prototype.init = function() {
     /* jshint validthis: true */
     var service = this;
-    return service.${3:nombreFactory}.${4:nombreFuncion}(${5:nombreParametro});
-  };
+  };${100}
 })();
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

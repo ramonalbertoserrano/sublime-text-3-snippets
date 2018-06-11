@@ -8,7 +8,6 @@
   ${2:nombreControlador}.\$inject = [
     '\$filter',
     '\$injector',
-    '\$log',
     '\$q',
     '\$state',
     '\$window',
@@ -28,26 +27,229 @@
   ) {
     /* jshint validthis: true */
     var vm = this;
-
     vm.\$filter = \$filter;
     vm.\$injector = \$injector;
-    vm.\$log = \$log;
     vm.\$q = \$q;
     vm.\$state = \$state;
     vm.\$window = \$window;
 
-    vm.\$dependencia = vm.\$injector.get('\$dependencia');
-
     vm.clienteData = clienteData;
     vm.userProfile = userProfile;
 
+    vm.${3:nombreConstantes} = vm.\$injector.get('${3:nombreConstantes}');
+    vm.enrolamientoConsultasService = vm.\$injector.get('enrolamientoConsultasService');
+
     vm.init();
+
+    vm.\$onInit = function() {
+      vm.\$window.scrollTo(0, 0);
+    };${100}
   }
 
   ${2:nombreControlador}.prototype.init = function() {
     /* jshint validthis: true */
     var vm = this;
+    var resultadoValidacionInicial = null;
+
+    vm.cargaInicialErrorHandler = { cargando: true, error: null, tipo: null };
+    vm.auxErrorHandler = { cargando: false, error: null, tipo: null };
+
+    vm.datosFormulario = vm.generarDatosFormulario();
+
+    resultadoValidacionInicial = vm.validacionInicial();
+    if (!resultadoValidacionInicial.estado) {
+      vm.setErrorHandler(true, resultadoValidacionInicial.mensaje);
+      return;
+    }
+
+    vm.crearListas();
+    vm.cargarUtilitariosMaestros().then(
+      function() {
+        vm.cargaInicialErrorHandler.cargando = false;
+      },
+      function(cargarUtilitariosMaestrosError) {
+        vm.setErrorHandler(true, cargarUtilitariosMaestrosError);
+      }
+    );
+  };
+
+  ${2:nombreControlador}.prototype.cargarUtilitariosMaestros = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var deferred = vm.\$q.defer();
+    var i = 0;
+
+    Promise.all(vm.getListarUtilitariosMaestrosPromises())
+      .then(function(getListarUtilitariosMaestrosPromisesResponse) {
+
+        angular.forEach(vm.listas, function(item, index){
+          vm.listas[index] =
+            getListarUtilitariosMaestrosPromisesResponse[i++];
+        });
+
+        Promise.all(vm.resolverUtilitarioMaestroPromises()).then(function(resolverUtilitarioMaestroPromisesResponse) {
+          i = 0;
+          vm.datosFormulario.NombreUtilitarioMaestro = resolverUtilitarioMaestroPromisesResponse[i++];
+          deferred.resolve();
+        });
+
+      })
+      /* jslint es5: true */
+      .catch(function(getListarUtilitariosMaestrosPromisesError) {
+        deferred.reject(getListarUtilitariosMaestrosPromisesError);
+      });
+
+    return deferred.promise;
+  };
+
+  ${2:nombreControlador}.prototype.crearListas = function() {
+    /* jshint validthis: true */
+    var vm = this;
+
+    vm.listas = {
+      NombreUtilitarioMaestro: null
     };
+
+    vm.listasEnDuro = {
+      ListaEnDuroA: [
+        { 'codigo': '1', 'codigoGuid': null, 'descripcion': 'a' }
+      ]
+    };
+  };
+
+  ${2:nombreControlador}.prototype.generarDatosFormulario = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var retorno = {};
+
+    return retorno;
+  };
+
+  ${2:nombreControlador}.prototype.getListarUtilitariosMaestros = function(tipo, guidPadre) {
+    /* jshint validthis: true */
+    var vm = this;
+    var deferred = vm.\$q.defer();
+    var mensajeError =
+      vm.${3:nombreConstantes}.mensajesError.getListarUtilitariosMaestros + ' (' + tipo + ').';
+
+    vm.enrolamientoConsultasService.getListarUtilitariosMaestros(tipo, guidPadre)
+      .then(getListarUtilitariosMaestrosComplete, getListarUtilitariosMaestrosFailed);
+
+    function getListarUtilitariosMaestrosComplete(getListarUtilitariosMaestrosCompleteResponse) {
+      if (getListarUtilitariosMaestrosCompleteResponse.data.errorCode === '0') {
+        deferred.resolve(
+          getListarUtilitariosMaestrosCompleteResponse.data.resultadoOperacion.listarMaestroResul.itemMaestro);
+      } else if(getListarUtilitariosMaestrosCompleteResponse.data.errorCode === '1') {
+        deferred.resolve([]);
+      } else {
+        deferred.reject(mensajeError);
+      }
+    }
+
+    function getListarUtilitariosMaestrosFailed() {
+      deferred.reject(mensajeError);
+    }
+
+    return deferred.promise;
+  };
+
+  ${2:nombreControlador}.prototype.getListarUtilitariosMaestrosPromises = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var retorno = [
+      vm.getListarUtilitariosMaestros('NombreUtilitarioMaestro')
+    ];
+
+    return retorno;
+  };
+
+  ${2:nombreControlador}.prototype.resolverUtilitarioMaestro = function(lista, campo, valor) {
+    /* jshint validthis: true */
+    var vm = this;
+    var deferred = vm.\$q.defer();
+    valor = vm.\$filter('reemplazarDiacriticos')(valor);
+    var valorTemp = valor;
+
+    angular.forEach(lista, function(item) {
+      if ((item[campo] !== null && valor !== null) &&
+        vm.\$filter('reemplazarDiacriticos')(item[campo].toString().toLowerCase()) ===
+          valor.toString().toLowerCase()) {
+        valorTemp = item;
+      }
+    });
+
+    valor = valor === valorTemp ?
+      null :
+      valorTemp;
+    deferred.resolve(valor);
+
+    return deferred.promise;
+  };
+
+  ${2:nombreControlador}.prototype.resolverUtilitarioMaestroPromises = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var retorno = [
+      vm.resolverUtilitarioMaestro(vm.listas.NombreUtilitarioMaestro, 'descripcion',
+        vm.datosFormulario.NombreUtilitarioMaestro)
+    ];
+
+    return retorno;
+  };
+
+  ${2:nombreControlador}.prototype.setErrorHandler = function(inicial, mensajeError, tipoError) {
+    /* jshint validthis: true */
+    var vm = this;
+    var errorHandler = inicial ?
+      'cargaInicialErrorHandler' :
+      'auxErrorHandler';
+
+    vm[errorHandler].error = {
+      message: mensajeError
+    };
+    vm[errorHandler].tipo = angular.isDefined(tipoError) ?
+      tipoError :
+      'E';
+    vm[errorHandler].cargando = false;
+    vm.\$window.scrollTo(0, 0);
+  };
+
+  ${2:nombreControlador}.prototype.validacionInicial = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var retorno = { estado: true, mensaje: null };
+
+    return retorno;
+  };
+
+  ${2:nombreControlador}.prototype.volver = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    vm.\$state.go('nombre-estado');
+  };
+
+  ${2:nombreControlador}.prototype.continuar = function() {
+    /* jshint validthis: true */
+    var vm = this;
+    var request = {};
+
+    vm.procesandoDatos = true;
+    vm.auxErrorHandler.error = null;
+
+    vm.servicio.funcion(request).then(
+      function() {
+        vm.\$state.go('nombre-estado');
+      },
+      function() {
+        funcionError();
+      }
+    );
+
+    function funcionError() {
+      vm.procesandoDatos = false;
+      vm.setErrorHandler(false, 'mensajeError');
+    }
+  };
 })();
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

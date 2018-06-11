@@ -24,11 +24,11 @@
     function ${4:nombreFuncion}(${5:nombreParametro}) {
       return \$http.get(ruta + '/${6:nombreRuta}/' + ${5:nombreParametro});
     }
-  }
+  }${100}
 })();
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-  <tabTrigger>bchngfactory</tabTrigger>
+  <tabTrigger>ngfactory</tabTrigger>
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <scope>source.js</scope>
 </snippet>

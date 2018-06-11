@@ -10,7 +10,7 @@ ${1:nombreControladorServicio}.prototype.set${2:nombreVariable} = function(valor
   /* jshint validthis: true */
   var ${3:nombreThis} = this;
   ${3:nombreThis}.${2:nombreVariable} = valor;
-};
+};${100}
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
   <tabTrigger>bchgettersetter</tabTrigger>

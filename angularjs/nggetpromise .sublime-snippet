@@ -3,10 +3,14 @@
 vm.${1:nombreServicio}.${2:nombreFuncion}(${3:nombreParametro}).then(
   function (${2:nombreFuncion}Response){
     vm.${2:nombreFuncion}Response = ${2:nombreFuncion}Response;
-  });
+  },
+  function (${2:nombreFuncion}Error){
+    vm.${2:nombreFuncion}Error = ${2:nombreFuncion}Error;
+  }
+);${100}
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-  <tabTrigger>bchnggetpromise</tabTrigger>
+  <tabTrigger>nggetpromise</tabTrigger>
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <scope>source.js</scope>
 </snippet>

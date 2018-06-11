@@ -1,14 +1,12 @@
 <snippet>
   <content><![CDATA[
 (function () {
-  var ${1:nombreConstante} = {
-
-  };
+  var ${1:nombreConstante} = {};
 
   angular
     .module('${2:nombreModulo}')
     .constant('${1:nombreConstante}', ${1:nombreConstante});
-})();
+})();${100}
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
   <tabTrigger>ngconstant</tabTrigger>
