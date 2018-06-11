@@ -18,7 +18,6 @@
   function ${2:nombreControlador}(
     \$filter,
     \$injector,
-    \$log,
     \$q,
     \$state,
     \$window,
@@ -27,6 +26,7 @@
   ) {
     /* jshint validthis: true */
     var vm = this;
+
     vm.\$filter = \$filter;
     vm.\$injector = \$injector;
     vm.\$q = \$q;
@@ -130,7 +130,7 @@
     var vm = this;
     var deferred = vm.\$q.defer();
     var mensajeError =
-      vm.${3:nombreConstantes}.mensajesError.getListarUtilitariosMaestros + ' (' + tipo + ').';
+      vm.${3:nombreConstantes}.mensajeError.getListarUtilitariosMaestros + ' (' + tipo + ').';
 
     vm.enrolamientoConsultasService.getListarUtilitariosMaestros(tipo, guidPadre)
       .then(getListarUtilitariosMaestrosComplete, getListarUtilitariosMaestrosFailed);
