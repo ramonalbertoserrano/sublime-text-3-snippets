@@ -112,7 +112,7 @@
 
     vm.listasEnDuro = {
       ListaEnDuroA: [
-        { 'codigo': '1', 'codigoGuid': null, 'descripcion': 'a' }
+        { codigo: '1', codigoGuid: null, descripcion: 'a' }
       ]
     };
   };
