@@ -51,10 +51,11 @@
     var vm = this;
     var resultadoValidacionInicial = null;
 
-    vm.cargaInicialErrorHandler = { cargando: true, error: null, tipo: null };
     vm.auxErrorHandler = { cargando: false, error: null, tipo: null };
+    vm.cargaInicialErrorHandler = { cargando: true, error: null, tipo: null };
 
     vm.datosFormulario = vm.generarDatosFormulario();
+    vm.procesandoDatos = false;
 
     resultadoValidacionInicial = vm.validacionInicial();
     if (!resultadoValidacionInicial.estado) {
@@ -241,14 +242,10 @@
         vm.\$state.go('nombre-estado');
       },
       function() {
-        funcionError();
+        vm.procesandoDatos = false;
+        vm.setErrorHandler(false, 'mensajeError');
       }
     );
-
-    function funcionError() {
-      vm.procesandoDatos = false;
-      vm.setErrorHandler(false, 'mensajeError');
-    }
   };
 })();
 ]]></content>
