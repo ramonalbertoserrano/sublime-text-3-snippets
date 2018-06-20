@@ -13,7 +13,7 @@ function ${2:nombreFuncion}Complete(${2:nombreFuncion}Response) {
   }
 }
 
-function ${2:nombreFuncion}Failed(${2:nombreFuncion}Error) {
+function ${2:nombreFuncion}Failed() {
   deferred.reject('${4:mensajeError}');
 }
 
