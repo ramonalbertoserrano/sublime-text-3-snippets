@@ -1,20 +1,21 @@
 <snippet>
   <content><![CDATA[
 var deferred = vm.\$q.defer();
+var mensajeError = vm.${1:nombreConstante}.${3:nombreFuncion};
 
-vm.${1:nombreServicio}.${2:nombreFuncion}(${3:nombreParametro})
-  .then(${2:nombreFuncion}Complete, ${2:nombreFuncion}Failed);
+vm.${2:nombreServicio}.${3:nombreFuncion}(${4:nombreParametro})
+  .then(${3:nombreFuncion}Complete, ${3:nombreFuncion}Failed);
 
-function ${2:nombreFuncion}Complete(${2:nombreFuncion}Response) {
-  if (${2:nombreFuncion}Response.data.errorCode !== '0') {
-    deferred.reject('${4:mensajeError}');
+function ${3:nombreFuncion}Complete(${3:nombreFuncion}Response) {
+  if (${3:nombreFuncion}Response.data.errorCode !== '0') {
+    deferred.reject(mensajeError);
   } else {
-    deferred.resolve(${2:nombreFuncion}Response.data);
+    deferred.resolve(${3:nombreFuncion}Response.data);
   }
 }
 
-function ${2:nombreFuncion}Failed() {
-  deferred.reject('${4:mensajeError}');
+function ${3:nombreFuncion}Failed() {
+  deferred.reject(mensajeError);
 }
 
 return deferred.promise;${100}

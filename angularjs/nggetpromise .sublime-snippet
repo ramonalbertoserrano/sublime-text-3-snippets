@@ -1,11 +1,11 @@
 <snippet>
   <content><![CDATA[
-vm.${1:nombreServicio}.${2:nombreFuncion}(${3:nombreParametro}).then(
-  function (${2:nombreFuncion}Response){
-    vm.${2:nombreFuncion}Response = ${2:nombreFuncion}Response;
+vm.${1:nombreFuncion}(${2:nombreParametro}).then(
+  function (${1:nombreFuncion}Response){
+    vm.${1:nombreFuncion}Response = ${1:nombreFuncion}Response;
   },
-  function (${2:nombreFuncion}Error){
-    vm.${2:nombreFuncion}Error = ${2:nombreFuncion}Error;
+  function (${1:nombreFuncion}Error){
+    vm.setErrorHandler(${3:cargaInicial}, ${1:nombreFuncion}Error);
   }
 );${100}
 ]]></content>
