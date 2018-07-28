@@ -1,9 +1,12 @@
 <snippet>
 	<content><![CDATA[
-console.log(${1:var});${100}
+(request, response, next) => {
+  response.set('Content-Type', 'text/plain');
+  response.status(${1:httpCode}).send(${2:message});
+}
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>clog</tabTrigger>
+	<tabTrigger>rsrouteparams</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.js</scope>
 </snippet>

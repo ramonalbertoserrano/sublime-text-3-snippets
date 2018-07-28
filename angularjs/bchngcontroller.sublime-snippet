@@ -37,7 +37,7 @@
     vm.userProfile = userProfile;
 
     vm.${3:nombreConstantes} = vm.\$injector.get('${3:nombreConstantes}');
-    vm.enrolamientoConsultasService = vm.\$injector.get('enrolamientoConsultasService');
+    vm.${4:nombreServicio} = vm.\$injector.get('${4:nombreServicio}');
 
     vm.init();
 

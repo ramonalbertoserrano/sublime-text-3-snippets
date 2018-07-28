@@ -1,0 +1,54 @@
+<snippet>
+  <content><![CDATA[
+(function() {
+  angular
+    .module('${1:nombreModulo}')
+    .controller('${2:nombreControlador}Controller', ${2:nombreControlador}Controller);
+
+  ${2:nombreControlador}Controller.\$inject = [
+    '\$injector',
+    '\$q',
+    '\$state',
+    '\$window',
+    'resolveData'
+  ];
+
+  function ${2:nombreControlador}Controller(
+    \$injector,
+    \$q,
+    \$state,
+    \$window,
+    resolveData
+  ) {
+    var vm = this;
+
+    vm.\$injector = \$injector;
+    vm.\$q = \$q;
+    vm.\$state = \$state;
+    vm.\$window = \$window;
+
+    vm.resolveData = resolveData;
+
+    vm.${3:nombreConstantes} = vm.\$injector.get('${3:nombreConstantes}');
+    vm.${2:nombreControlador}Service = vm.\$injector.get('${2:nombreControlador}Service');
+
+    vm.volver = volver;
+
+    activate();
+
+    function activate() {
+      vm.cargando = false;
+      vm.datosFormulario = {};
+    }
+
+    function volver() {
+      vm.\$state.go('');
+    }
+  }
+})();${100}
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ngcontroller</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>
