@@ -1,9 +1,15 @@
 <snippet>
   <content><![CDATA[
-System.out.println(${1});${100}
+public ${2:type} get${1:reference}(){
+  return ${1:reference};
+}
+
+public void set${1:reference}(${2:type} ${1:reference}){
+  this.${1:reference} = ${1:reference};
+}
 ]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-  <tabTrigger>rssysout</tabTrigger>
+  <tabTrigger>rsgettersetter</tabTrigger>
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
   <scope>source.java</scope>
 </snippet>
